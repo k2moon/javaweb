@@ -5,7 +5,7 @@ import java.util.Date;
 public class MemberDTO {
 	private int idx;
 	private String id, pw, name, role;
-	private Date redate;
+	private Date regdate;
 	
 	public MemberDTO() {
 	}
@@ -18,14 +18,14 @@ public class MemberDTO {
 		this.role = role;
 	}
 
-	public MemberDTO(int idx, String id, String pw, String name, String role, Date redate) {
+	public MemberDTO(int idx, String id, String pw, String name, String role, Date regdate) {
 		super();
 		this.idx = idx;
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
 		this.role = role;
-		this.redate = redate;
+		this.regdate = regdate;
 	}
 
 	public int getIdx() {
@@ -68,18 +68,18 @@ public class MemberDTO {
 		this.role = role;
 	}
 
-	public Date getRedate() {
-		return redate;
+	public Date getRegdate() {
+		return regdate;
 	}
 
-	public void setRedate(Date redate) {
-		this.redate = redate;
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
 
 	@Override
 	public String toString() {
-		return "MemberDTO [idx=" + idx + ", id=" + id + ", pw=" + pw + ", name=" + name + ", role=" + role + ", redate="
-				+ redate + "]";
+		return "MemberDTO [idx=" + idx + ", id=" + id + ", pw=" + pw + ", name=" + name + ", role=" + role + ", regdate="
+				+ regdate + "]";
 	}
 
 	
