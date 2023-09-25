@@ -1,37 +1,41 @@
 package member;
 
+import java.util.Date;
+
 public class MemberDTO {
-	private String idx, id, pw, name, regdate;
-	private int age;
+	private int idx;
+	private String id, pw, name, role;
+	private Date redate;
 	
 	public MemberDTO() {
 	}
-	
-	public MemberDTO(String idx, String id, String pw, String name, int age, String regdate) {
+
+	public MemberDTO(String id, String pw, String name, String role) {
+		super();
+		this.id = id;
+		this.pw = pw;
+		this.name = name;
+		this.role = role;
+	}
+
+	public MemberDTO(int idx, String id, String pw, String name, String role, Date redate) {
 		super();
 		this.idx = idx;
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
-		this.age = age;
-		this.regdate = regdate;
-	}
-	
-	public MemberDTO(String id, String pw, String name, int age) {
-		this.id = id;
-		this.pw = pw;
-		this.name = name;
-		this.age = age;
+		this.role = role;
+		this.redate = redate;
 	}
 
-	public String getIdx() {
+	public int getIdx() {
 		return idx;
 	}
 
-	public void setIdx(String idx) {
+	public void setIdx(int idx) {
 		this.idx = idx;
 	}
-	
+
 	public String getId() {
 		return id;
 	}
@@ -56,24 +60,29 @@ public class MemberDTO {
 		this.name = name;
 	}
 
-	public int getAge() {
-		return age;
+	public String getRole() {
+		return role;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
-	}
-	
-	public String getRegdate() {
-		return regdate;
+	public void setRole(String role) {
+		this.role = role;
 	}
 
-	public void setRegdate(String regdate) {
-		this.regdate = regdate;
+	public Date getRedate() {
+		return redate;
+	}
+
+	public void setRedate(Date redate) {
+		this.redate = redate;
 	}
 
 	@Override
 	public String toString() {
-		return "회원번호: " + idx + ", ID: " + id + ", 비밀번호: " + pw + ", 이름: " + name + ", 나이: " + age + ", 가입날짜: " + regdate;
+		return "MemberDTO [idx=" + idx + ", id=" + id + ", pw=" + pw + ", name=" + name + ", role=" + role + ", redate="
+				+ redate + "]";
 	}
+
+	
+	
+	
 }

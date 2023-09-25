@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>index.jsp</title>
+<title>basic/index.jsp</title>
 </head>
 <body>
 <%@include file="topmenu.jsp" %>
-<h2>Home</h2>
+<h2>Basic</h2>
 </body>
 </html>
