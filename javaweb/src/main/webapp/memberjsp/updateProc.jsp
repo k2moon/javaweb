@@ -12,7 +12,7 @@ request.setCharacterEncoding("utf-8");
 String id = (String)session.getAttribute("id");
 String pw = request.getParameter("pw");
 String name = request.getParameter("name");
-int age = Integer.parseInt(request.getParameter("age"));
+String role = request.getParameter("role");
 %>    
 <%
 Connection conn = null;
@@ -31,11 +31,11 @@ try {
 	conn = DriverManager.getConnection(url, user, password);
 	out.print("Conn OK!!");
 	
-	String sql = "update member set pw = ? , name = ?, age = ? where id = ?";
+	String sql = "update member set pw = ? , name = ?, role = ? where id = ?";
 	pstmt = conn.prepareStatement(sql);
 	pstmt.setString(1, pw);
 	pstmt.setString(2, name);
-	pstmt.setInt(3, age);
+	pstmt.setString(3, role);
 	pstmt.setString(4, id);
 	
 	rs = pstmt.executeUpdate();	

@@ -8,6 +8,6 @@
 </head>
 <body>
 <%@include file="topmenu.jsp" %>
-<h2>Basic</h2>
+<h2>Member v.JSP</h2>
 </body>
 </html>

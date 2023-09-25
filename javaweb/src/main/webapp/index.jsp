@@ -7,6 +7,6 @@
 <title>index.jsp</title>
 </head>
 <body>
-
+<%@include file="topmenu.jsp" %>
 </body>
 </html>

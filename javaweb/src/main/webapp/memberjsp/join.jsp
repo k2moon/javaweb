@@ -17,8 +17,8 @@
 		<tr><th>PW2</th><td><input type="text" name="pw2"></td></tr>
 		<tr><th>Name</th><td><input type="text" name="name"></td></tr>
 		<tr><th>Role</th><td>
+		<input type="radio" name="role" value="1" checked="checked">Member
 		<input type="radio" name="role" value="0">Admin
-		<input type="radio" name="role" value="1">Member
 		</td></tr>
 		<tr><td colspan="2"><input type="submit" value="Submit"></td></tr>
 	</table>

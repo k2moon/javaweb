@@ -4,7 +4,7 @@
 	function deleteConfirm() {
 		const input = confirm("회원을 탈퇴할까요?");
 		alert(input);
-		if (input) location.href = "delete.jsp";
+		if (input) location.href = "deleteProc.jsp";
 		else return;
 	};
 	
@@ -16,9 +16,9 @@
 
 <% if (session.getAttribute("id") == null) { %>
 	<a href="join.jsp">회원가입</a> |
-	<a href="login.do">로그인</a> |
+	<a href="login.jsp">로그인</a> |
 	
-<% } else { %>
+<% } else { %>	
 	<a href="update.jsp">정보수정</a> |
 	<a href="#" onclick="deleteConfirm();">회원탈퇴</a> |
 	<a href="logout.jsp">로그아웃</a> | <br>
