@@ -50,7 +50,7 @@ try {
 	session.invalidate();
 %>
 	alert('회원탈퇴가 되었습니다. 그 동안 감사했습니다.');
-	location.href = 'index.jsp';
+	location.href = 'main.jsp';
 <%}else{%>
 	alert('죄송합니다. 잠시후에 다시 해주세요.');
 	history.back();

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+String subPath = request.getContextPath() + "/member-servlet";
+%>    
 <script>
 	function deleteConfirm() {
 		const input = confirm("회원을 탈퇴할까요?");
@@ -9,19 +12,20 @@
 	};
 	
 </script>
-<h1>Member Service</h1>
+<%@include file="../topmenu.jsp" %>
+<h1>Member Service v.Servlet</h1>
 <h2>
-<a href="index.jsp">Home</a> |
-<a href="memberList.jsp">회원목록</a> |
+<a href="<%=subPath %>/index.jsp">Home</a> |
+<a href="<%=subPath %>/memberList.jsp">회원목록</a> |
 
 <% if (session.getAttribute("id") == null) { %>
-	<a href="join.jsp">회원가입</a> |
-	<a href="login.jsp">로그인</a> |
+	<a href="<%=subPath %>/join.jsp">회원가입</a> |
+	<a href="<%=subPath %>/login.jsp">로그인</a> |
 	
 <% } else { %>	
-	<a href="update.jsp">정보수정</a> |
+	<a href="<%=subPath %>/update.jsp">정보수정</a> |
 	<a href="#" onclick="deleteConfirm();">회원탈퇴</a> |
-	<a href="logout.jsp">로그아웃</a> | <br>
+	<a href="<%=subPath %>/logout.jsp">로그아웃</a> | <br>
 	<%=session.getAttribute("name") %>(<%=session.getAttribute("id") %>) 로그인 중
 <% } %>
 </h2>

@@ -64,7 +64,7 @@ try {
 if(isId & isPw){
 	session.setAttribute("id", id);
 	session.setAttribute("name", name);
-	response.sendRedirect("index.jsp");
+	response.sendRedirect("main.jsp");
 }else{
 %>
 <script>

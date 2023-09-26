@@ -56,7 +56,7 @@ try {
 <script>
 <%if(rs == 1){%>
 	alert('회원가입을 축하 드립니다.');
-	location.href = 'index.jsp';
+	location.href = 'main.jsp';
 <%}else{%>
 	alert('죄송합니다. 잠시후에 다시 해주세요.');
 	history.back();

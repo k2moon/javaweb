@@ -1,14 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<h1>Member Service </h1>  
+<%
+String contextPath = request.getContextPath();
+%>
+<h1>Java Web Application </h1>  
 <h2>
-<a href="<%=request.getContextPath()%>">Home</a> |
-<a href="basic/index.jsp">Basic</a> |
-<a href="memberjsp/index.jsp">Member v.JSP</a> |
-<a href="memberdao/index.jsp">Member v.DAO</a> |
-<a href="memberajax/index.jsp">Member v.AJAX</a> |
-<a href="membermvc/index.jsp">Member v.MVC</a> |
-<a href="memberjstl/index.jsp">Member v.JSTL</a> |
+<a href="<%=contextPath %>">Home</a> |
+<a href="<%=contextPath %>/basic/index.jsp">Basic</a> |
+<a href="<%=contextPath %>/member-jsp/main.jsp">Member v.JSP</a> |
+<a href="<%=contextPath %>/member-dao/main.jsp">Member v.DAO</a> |
+<a href="<%=contextPath %>/member-servlet/main.jsp">Member v.Servlet</a> |
+<a href="<%=contextPath %>/member-ajax/main.jsp">Member v.AJAX</a> |
+<a href="<%=contextPath %>/member-mvc/main.jsp">Member v.MVC</a> |
+<a href="<%=contextPath %>member-jstl/main.jsp">Member v.JSTL</a> |
 
 </h2>
 <hr>

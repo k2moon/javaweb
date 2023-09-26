@@ -7,7 +7,7 @@
 <title>login.jsp</title>
 </head>
 <body>
-<%@include file="topmenu.jsp" %>
+<%@include file="submenu.jsp" %>
 <h2>로그인</h2>
 <hr>
 <form action="loginProc.jsp" method="post">

@@ -57,7 +57,7 @@ try {
 <title>update.jsp</title>
 </head>
 <body>
-<%@include file="topmenu.jsp" %>
+<%@include file="submenu.jsp" %>
 <h2>회원정보수정</h2>
 <hr>
 <form action="updateProc.jsp" method="post">

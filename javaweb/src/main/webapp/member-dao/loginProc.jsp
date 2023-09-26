@@ -32,7 +32,7 @@
 <% if (isId & isPw) { 
 	session.setAttribute("id", id);
 	session.setAttribute("name", name);
-	response.sendRedirect("index.jsp");
+	response.sendRedirect("main.jsp");
 } else { %>
 <script>
 	alert('ID나 PW를 다시 확인해주세요!!');

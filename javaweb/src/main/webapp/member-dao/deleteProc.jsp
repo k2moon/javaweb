@@ -24,7 +24,7 @@
 <% if (rs == 1) { 
 	session.invalidate(); %>
 	alert('회원탈퇴가 되었습니다. 그동안 감사했습니다.');
-	location.href = 'index.jsp';
+	location.href = 'main.jsp';
 <% } else { %>
 	alert('죄송합니다. 잠시 후에 다시 해주세요.');
 	history.back();

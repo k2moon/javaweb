@@ -9,9 +9,10 @@
 	};
 	
 </script>
-<h1>Member Service</h1>
+<%@include file="../topmenu.jsp" %>
+<h1>Member Service v.JSP</h1>
 <h2>
-<a href="index.jsp">Home</a> |
+<a href="">Main</a> |
 <a href="memberList.jsp">회원목록</a> |
 
 <% if (session.getAttribute("id") == null) { %>

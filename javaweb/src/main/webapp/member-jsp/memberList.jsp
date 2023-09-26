@@ -63,7 +63,7 @@ try {
 <title>memberList.jsp</title>
 </head>
 <body>
-<%@include file="topmenu.jsp" %>
+<%@include file="submenu.jsp" %>
 <h2>회원목록</h2>
 <hr>
 <table border="1">

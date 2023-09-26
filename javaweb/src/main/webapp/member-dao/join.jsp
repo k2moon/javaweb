@@ -7,7 +7,7 @@
 <title>join.jsp</title>
 </head>
 <body>
-<%@include file="topmenu.jsp" %>
+<%@include file="submenu.jsp" %>
 <h2>회원가입</h2>
 <hr>
 <form action="joinProc.jsp" method="post">

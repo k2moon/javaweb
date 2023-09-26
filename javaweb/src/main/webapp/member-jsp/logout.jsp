@@ -5,5 +5,5 @@ session.invalidate();
 %>
 <script>
 alert('가실려구요? 또 오세요. 감사합니다!!');
-location.href = 'index.jsp';
+location.href = 'main.jsp';
 </script>
