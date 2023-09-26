@@ -89,7 +89,7 @@ public class MemberDAO {
 		try {
 			conn = getConnection();
 			
-			String sql = "select pw, name, age from member where id = ?";
+			String sql = "select idx, id, pw, name, role, regdate from member where id = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getId());
 			

@@ -83,7 +83,7 @@ try {
 		<td><%=dto.getPw() %></td>
 		<td><%=dto.getName() %></td>
 		<td><%=dto.getRole() %></td>
-		<td><%=dto.getRedate() %></td>
+		<td><%=dto.getRegdate() %></td>
 	</tr>
 <% } %>
 
