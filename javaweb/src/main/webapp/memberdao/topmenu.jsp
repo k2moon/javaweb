@@ -4,7 +4,7 @@
 	function deleteConfirm() {
 		const input = confirm("회원을 탈퇴할까요?");
 		alert(input);
-		if (input) location.href = "deleteProc.jsp";
+		if (input) location.href = "delete.jsp";
 		else return;
 	};
 	

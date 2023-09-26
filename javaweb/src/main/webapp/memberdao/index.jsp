@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>basic/index.jsp</title>
+<title>memberdao/index.jsp</title>
 </head>
 <body>
 <%@include file="topmenu.jsp" %>
-<h2>Member v.JSP</h2>
+<h2>Member v.DAO</h2>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>basic/index.jsp</title>
+<title>memberjsp/index.jsp</title>
 </head>
 <body>
 <%@include file="topmenu.jsp" %>
