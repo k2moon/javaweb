@@ -1,7 +1,6 @@
 <%@page import="com.google.gson.Gson"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
-<%@page import="com.google.gson.JsonObject"%>
 <%@page import="member.MemberDAO"%>
 <%@page import="member.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
