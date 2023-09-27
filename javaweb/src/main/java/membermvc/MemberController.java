@@ -36,7 +36,8 @@ public class MemberController extends HttpServlet {
 		System.out.println(uri); // /myweb/memberList.do
 		String action = uri.substring(uri.lastIndexOf("/"));
 		
-		HttpSession session = request.getSession();
+		MemberDAO dao = new MemberDAO();
+		HttpSession session = request.getSession();		
 		String view = "";
 		
 		if(action.equals("/main.do")) {
@@ -45,14 +46,13 @@ public class MemberController extends HttpServlet {
 			view = "main.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 			dispatcher.forward(request, response);
+			
 		}else if(action.equals("/memberList.do")) {
 			System.out.println("/memberList.do");
 			
-			MemberDAO dao = new MemberDAO();
 			List<MemberDTO> list = dao.getMemberList();
 			
-			request.setAttribute("list", list);
-			
+			request.setAttribute("list", list);			
 			view = "memberList.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 			dispatcher.forward(request, response);
@@ -63,6 +63,7 @@ public class MemberController extends HttpServlet {
 			view = "join.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 			dispatcher.forward(request, response);
+			
 		}else if(action.equals("/login.do")) {
 			System.out.println("/login.do");
 			
@@ -79,7 +80,6 @@ public class MemberController extends HttpServlet {
 			String role = request.getParameter("role");
 			MemberDTO dto = new MemberDTO(id, pw, name, role);
 			
-			MemberDAO dao = new MemberDAO();
 			int rs = dao.insert(dto);
 			
 			view = "login.do";			
@@ -94,7 +94,6 @@ public class MemberController extends HttpServlet {
 			MemberDTO dto = new MemberDTO();
 			dto.setId(id);
 			
-			MemberDAO dao = new MemberDAO();
 			dto = dao.getMember(dto);
 			
 			if (dto != null) {
@@ -129,7 +128,6 @@ public class MemberController extends HttpServlet {
 			MemberDTO dto = new MemberDTO();
 			dto.setId(id);
 
-			MemberDAO dao = new MemberDAO();
 			dto = dao.getMember(dto);
 			
 			request.setAttribute("dto", dto);
@@ -147,7 +145,6 @@ public class MemberController extends HttpServlet {
 			String role = request.getParameter("role");
 			MemberDTO dto = new MemberDTO(id, pw, name, role);
 			
-			MemberDAO dao = new MemberDAO();
 			int rs = dao.update(dto);
 			
 			session.setAttribute("name", name);
@@ -170,7 +167,7 @@ public class MemberController extends HttpServlet {
 			
 			MemberDTO dto = new MemberDTO();
 			dto.setId(id);
-			MemberDAO dao = new MemberDAO();
+			
 			dto = dao.getMember(dto);
 			
 			if (dto.getPw().equals(pw)) {

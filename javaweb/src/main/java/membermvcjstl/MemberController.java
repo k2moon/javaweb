@@ -20,6 +20,7 @@ public class MemberController{
 	protected void requestMapping(String action, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("MemberController - requestMapping");
 		
+		IMemberService service = new MemberServiceImpl();
 		HttpSession session = request.getSession();
 		String view = "";
 		
@@ -32,8 +33,7 @@ public class MemberController{
 		}else if(action.equals("/memberList.go")) {
 			System.out.println("/memberList.go");
 			
-			MemberDAO dao = new MemberDAO();
-			List<MemberDTO> list = dao.getMemberList();
+			List<MemberDTO> list = service.getMemberList();
 			
 			request.setAttribute("list", list);
 			
@@ -61,8 +61,7 @@ public class MemberController{
 			String role = request.getParameter("role");
 			MemberDTO dto = new MemberDTO(id, pw, name, role);
 			
-			MemberDAO dao = new MemberDAO();
-			int rs = dao.insert(dto);
+			int rs = service.insert(dto);
 			
 			view = "login.go";			
 			viewResolver(view, request, response);
@@ -76,8 +75,7 @@ public class MemberController{
 			MemberDTO dto = new MemberDTO();
 			dto.setId(id);
 			
-			MemberDAO dao = new MemberDAO();
-			dto = dao.getMember(dto);
+			dto = service.getMember(dto);
 			
 			if (dto != null) {
 				if (dto.getPw().equals(pw)) {
@@ -110,8 +108,7 @@ public class MemberController{
 			MemberDTO dto = new MemberDTO();
 			dto.setId(id);
 
-			MemberDAO dao = new MemberDAO();
-			dto = dao.getMember(dto);
+			dto = service.getMember(dto);
 			
 			request.setAttribute("dto", dto);
 			
@@ -127,8 +124,7 @@ public class MemberController{
 			String role = request.getParameter("role");
 			MemberDTO dto = new MemberDTO(id, pw, name, role);
 			
-			MemberDAO dao = new MemberDAO();
-			int rs = dao.update(dto);
+			int rs = service.update(dto);
 			
 			session.setAttribute("name", name);
 			
@@ -149,15 +145,18 @@ public class MemberController{
 			
 			MemberDTO dto = new MemberDTO();
 			dto.setId(id);
-			MemberDAO dao = new MemberDAO();
-			dto = dao.getMember(dto);
+			
+			dto = service.getMember(dto);
 			
 			if (dto.getPw().equals(pw)) {
-				dao.delete(dto);
+				
+				service.delete(dto);
 				session.invalidate();
 				
 				view = "main.go";
+				
 			} else {
+				
 				view = "delete.go";
 			}		
 			
@@ -169,13 +168,15 @@ public class MemberController{
 
 
 	void viewResolver(String view, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//System.out.println(view);
+		
 		String viewExt = view.split("\\.")[1];
+		
 		if(viewExt.equals("jsp")) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 			dispatcher.forward(request, response);
 		}else {
 			response.sendRedirect(view);
 		}
+		
 	}
 }
