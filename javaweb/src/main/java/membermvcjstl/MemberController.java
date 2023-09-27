@@ -162,10 +162,8 @@ public class MemberController{
 			
 			viewResolver(view, request, response);
 			
-		}
-		
+		}		
 	}
-
 
 	void viewResolver(String view, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
