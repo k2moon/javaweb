@@ -60,7 +60,7 @@ try {
 <%@include file="submenu.jsp" %>
 <h2>회원정보수정</h2>
 <hr>
-<form action="updateProc.jsp" method="post">
+<form action="updateAction.jsp" method="post">
 	<table border="1">
 		<tr><th>ID</th><td><%=dto.getId()%></td></tr>
 		<tr><th>PW</th><td><input type="text" name="pw" value="<%=dto.getPw()%>"></td></tr>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-String subPath = request.getContextPath() + "/member-servlet";
+String subPath = request.getContextPath() + "/member-ajax";
 %>    
 <script>
 	function deleteConfirm() {
@@ -13,10 +13,11 @@ String subPath = request.getContextPath() + "/member-servlet";
 	
 </script>
 <%@include file="../topmenu.jsp" %>
-<h1>Member Service v.Servlet</h1>
+<h1>Member Service v.AJAX</h1>
 <h2>
 <a href="<%=subPath %>/main.jsp">Home</a> |
 <a href="<%=subPath %>/memberList.jsp">회원목록</a> |
+<a href="<%=subPath %>/memberSearchNameList.jsp">회원목록(이름검색)</a> |
 
 <% if (session.getAttribute("id") == null) { %>
 	<a href="<%=subPath %>/join.jsp">회원가입</a> |

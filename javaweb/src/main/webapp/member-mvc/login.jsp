@@ -10,7 +10,7 @@
 <%@include file="submenu.jsp" %>
 <h2>로그인</h2>
 <hr>
-<form action="<%=contextPath %>/loginAction.do" method="post">
+<form action="loginAction.do" method="post">
 	<table border="1">
 		<tr><th>ID</th><td><input type="text" name="id"></td></tr>
 		<tr><th>PW</th><td><input type="text" name="pw"></td></tr>

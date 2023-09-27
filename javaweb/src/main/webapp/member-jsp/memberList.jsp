@@ -77,7 +77,7 @@ try {
 </tr>
 
 <% for (MemberDTO dto : list) { %>
-	<tr style="text-align: center;">
+	<tr>
 		<td><%=dto.getIdx() %></td>
 		<td><%=dto.getId() %></td>
 		<td><%=dto.getPw() %></td>

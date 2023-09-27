@@ -1,51 +1,47 @@
-package memberservlet;
+package memberajax;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import com.google.gson.Gson;
 
 import member.MemberDAO;
 import member.MemberDTO;
 
-@WebServlet("/loginProc")
-public class LoginProc extends HttpServlet {
+@WebServlet("/joinAction.json")
+public class JoinAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
+		
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
-		
-		MemberDTO dto = new MemberDTO();
-		dto.setId(id);
+		String name = request.getParameter("name");
+		String role = request.getParameter("role");
+		MemberDTO dto = new MemberDTO(id, pw, name, role);
 		
 		MemberDAO dao = new MemberDAO();
-		dto = dao.getMember(dto);
-		String folderName = "./member-servlet/";
-		if (dto != null) {
-			if (dto.getPw().equals(pw)) {
-				HttpSession session = request.getSession();
-				session.setAttribute("id", id);
-				session.setAttribute("name", dto.getName());
-				String jspName = "main.jsp";
-				String path = folderName + jspName;
-				response.sendRedirect(path);
-			} else {
-				String jspName = "login.jsp";
-				String path = folderName + jspName;
-				response.sendRedirect(path);
-			}
-		} else {
-			response.sendRedirect("login.jsp");
-		}
+		int rs = dao.insert(dto);
+		
+		Map<String, String> map = new HashMap<>();
+		map.put("rs", rs+"");
+		
+		String gson = new Gson().toJson(map);
+		
+		response.getWriter().write(gson);
+		
 	}
 
 }

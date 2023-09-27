@@ -11,8 +11,8 @@ String contextPath = request.getContextPath();
 <a href="<%=contextPath %>/member-dao/main.jsp">Member v.DAO</a> |
 <a href="<%=contextPath %>/member-servlet/main.jsp">Member v.Servlet</a> |
 <a href="<%=contextPath %>/member-ajax/main.jsp">Member v.AJAX</a> |
-<a href="<%=contextPath %>/member-mvc/main.jsp">Member v.MVC</a> |
-<a href="<%=contextPath %>member-jstl/main.jsp">Member v.JSTL</a> |
+<a href="<%=contextPath %>/member-mvc/main.do">Member v.MVC</a> |
+<a href="<%=contextPath %>/member-mvc-jstl/main.do">Member v.MVC-JSTL</a> |
 
 </h2>
 <hr>

@@ -3,12 +3,8 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	request.setCharacterEncoding("utf-8");
-	
-	MemberDAO dao = new MemberDAO();
-	List<MemberDTO> list = dao.getMemberList();
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +12,7 @@
 <title>memberList.jsp</title>
 </head>
 <body>
-<%@include file="submenu.jsp" %>
+<jsp:include page="submenu.jsp" />
 <h2>회원목록</h2>
 <hr>
 <table border="1">
@@ -29,16 +25,16 @@
 	<th>Regdate</th>
 </tr>
 
-<% for (MemberDTO dto : list) { %>
+<c:forEach var="dto" items="${list }">
 	<tr>
-		<td><%=dto.getIdx() %></td>
-		<td><%=dto.getId() %></td>
-		<td><%=dto.getPw() %></td>
-		<td><%=dto.getName() %></td>
-		<td><%=dto.getRole() %></td>
-		<td><%=dto.getRegdate() %></td>
+		<td>${dto.idx}</td>
+		<td>${dto.id}</td>
+		<td>${dto.pw}</td>
+		<td>${dto.name}</td>
+		<td>${dto.role}</td>
+		<td>${dto.regdate}</td>
 	</tr>
-<% } %>
+</c:forEach>
 
 </table>
 </body>

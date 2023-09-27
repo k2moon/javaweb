@@ -11,36 +11,40 @@ import javax.servlet.http.HttpSession;
 import member.MemberDAO;
 import member.MemberDTO;
 
-@WebServlet("/deleteProc")
-public class DeleteProc extends HttpServlet {
+@WebServlet("/loginAction.do")
+public class LoginAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		HttpSession session = request.getSession();
-		String id = (String)session.getAttribute("id");
+		response.setCharacterEncoding("UTF-8");
+		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		
 		MemberDTO dto = new MemberDTO();
 		dto.setId(id);
+		
 		MemberDAO dao = new MemberDAO();
 		dto = dao.getMember(dto);
-		
 		String folderName = "./member-servlet/";
-		if (dto.getPw().equals(pw)) {
-			dao.delete(dto);
-			session.invalidate();
-			String jspName = "main.jsp";
-			String path = folderName + jspName;
-			response.sendRedirect(path);
+		if (dto != null) {
+			if (dto.getPw().equals(pw)) {
+				HttpSession session = request.getSession();
+				session.setAttribute("id", id);
+				session.setAttribute("name", dto.getName());
+				String jspName = "main.jsp";
+				String path = folderName + jspName;
+				response.sendRedirect(path);
+			} else {
+				String jspName = "login.jsp";
+				String path = folderName + jspName;
+				response.sendRedirect(path);
+			}
 		} else {
-			String jspName = "delete.jsp";
-			String path = folderName + jspName;
-			response.sendRedirect(path);
+			response.sendRedirect("login.jsp");
 		}
 	}
 

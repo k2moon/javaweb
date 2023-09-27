@@ -3,6 +3,11 @@
 <%
 // loginCheck.jsp
 if(session.getAttribute("id") == null){
-	response.sendRedirect("login.jsp");
+%>
+ <script>
+	alert('session이 끊겼습니다.!!');
+	location.href = 'login.do';
+</script>	
+<%	
 }
 %> 

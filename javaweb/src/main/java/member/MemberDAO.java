@@ -68,7 +68,7 @@ public class MemberDAO {
 				String name = rs.getString("name");
 				String role = rs.getString("role");
 				Date regdate = rs.getDate("regdate");
-				System.out.println(regdate);
+				
 				MemberDTO dto = new MemberDTO(idx, id, pw, name, role, regdate);
 				list.add(dto);
 			}
@@ -184,7 +184,7 @@ public class MemberDAO {
 		return rs;
 	}
 	
-	public List<MemberDTO> getMemberListName(MemberDTO dto) {
+	public List<MemberDTO> getMemberSearchNameList(MemberDTO dto) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

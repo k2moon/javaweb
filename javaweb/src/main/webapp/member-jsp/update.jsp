@@ -6,7 +6,7 @@
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- 
+<%@include file="loginCheck.jsp" %>
 <%
 request.setCharacterEncoding("utf-8");
 String id = (String)session.getAttribute("id");
@@ -27,7 +27,8 @@ dto = dao.getMember(dto);
 <%@include file="submenu.jsp" %>
 <h2>회원정보수정</h2>
 <hr>
-<form action="updateProc.jsp" method="post">
+<%if(session.getAttribute("id") != null){ %>
+<form action="updateAction.jsp" method="post">
 	<table border="1">
 		<tr><th>ID</th><td><%=dto.getId()%></td></tr>
 		<tr><th>PW</th><td><input type="text" name="pw" value="<%=dto.getPw()%>"></td></tr>
@@ -45,5 +46,6 @@ dto = dao.getMember(dto);
 		<tr><td colspan="2"><input type="submit" value="Submit"></td></tr>
 	</table>
 </form>
+<%} %>
 </body>
 </html>

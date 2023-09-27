@@ -6,8 +6,7 @@
 <%
 	request.setCharacterEncoding("utf-8");
 	
-	MemberDAO dao = new MemberDAO();
-	List<MemberDTO> list = dao.getMemberList();
+	List<MemberDTO> list = (List<MemberDTO>)request.getAttribute("list");
 %>
 <!DOCTYPE html>
 <html>

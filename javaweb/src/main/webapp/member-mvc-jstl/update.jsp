@@ -6,17 +6,9 @@
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- 
-<%
-request.setCharacterEncoding("utf-8");
-String id = (String)session.getAttribute("id");
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
+<jsp:include page="loginCheck.jsp" />
 
-MemberDTO dto = new MemberDTO();
-dto.setId(id);
-
-MemberDAO dao = new MemberDAO();
-dto = dao.getMember(dto);
-%>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,26 +16,28 @@ dto = dao.getMember(dto);
 <title>update.jsp</title>
 </head>
 <body>
-<%@include file="submenu.jsp" %>
-<h2>회원정보수정</h2>
+<jsp:include page="submenu.jsp" />
+<h2>회원정보수정 : id = <%=session.getAttribute("id") %></h2>
 <hr>
-<form action="<%=contextPath %>/updateAction.do" method="post">
+<c:if test="${id != null }">
+<form action="updateAction.do" method="post">
 	<table border="1">
-		<tr><th>ID</th><td><%=dto.getId()%></td></tr>
-		<tr><th>PW</th><td><input type="text" name="pw" value="<%=dto.getPw()%>"></td></tr>
-		<tr><th>Name</th><td><input type="text" name="name" value="<%=dto.getName()%>"></td></tr>
+		<tr><th>ID</th><td>${dto.id}</td></tr>
+		<tr><th>PW</th><td><input type="text" name="pw" value="${dto.pw}"></td></tr>
+		<tr><th>Name</th><td><input type="text" name="name" value="${dto.name}"></td></tr>
 		<tr><th>Role</th><td>
-		<%if(dto.getRole().equals("1")){%>	
+		<c:if test="${dto.role == '1' }">
 		<input type="radio" name="role" value="1" checked="checked">Member
 		<input type="radio" name="role" value="0">Admin
-		<%} %>
-		<%if(dto.getRole().equals("0")) {%>
+		</c:if>
+		<c:if test="${dto.role == '0' }">
 		<input type="radio" name="role" value="1">Member
 		<input type="radio" name="role" value="0" checked="checked">Admin
-		<%}%>
+		</c:if>
 		</td></tr>
 		<tr><td colspan="2"><input type="submit" value="Submit"></td></tr>
 	</table>
 </form>
+</c:if> 
 </body>
 </html>

@@ -11,7 +11,7 @@
 <%@include file="submenu.jsp" %>
 <h2>회원탈퇴</h2>
 <hr>
-<form action="<%=contextPath %>/deleteProc" method="post">
+<form action="<%=contextPath %>/deleteAction.do" method="post">
 	<table border="1">
 		<tr><th>PW</th><td><input type="password" name="pw"></td></tr>
 		<tr><td colspan="2"><input type="submit" value="회원탈퇴"></td></tr>
