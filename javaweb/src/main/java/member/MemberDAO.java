@@ -48,6 +48,30 @@ public class MemberDAO {
 	}
 	
 	
+	public int getMemberCount() {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int retRs = 0;
+		
+		try {
+			conn = getConnection();
+			
+			String sql = "select count(*) as cnt from member";
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				retRs = rs.getInt("cnt");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(conn, pstmt, rs);
+		}
+		return retRs;
+	} // End
+
 	public List<MemberDTO> getMemberList() {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -79,6 +103,42 @@ public class MemberDAO {
 		}
 		return list;
 	} // End
+
+	public List<MemberDTO> getMemberListPaging(int pageNum, int listNum) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<MemberDTO> list = new ArrayList<MemberDTO>();
+		
+		int offSet = (pageNum -1) * listNum;
+		
+		try {
+			conn = getConnection();
+			
+			String sql = "select * from member order by idx desc limit ? offset ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, listNum);
+			pstmt.setInt(2, offSet);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				int idx = rs.getInt("idx");
+				String id = rs.getString("id");
+				String pw = rs.getString("pw");
+				String name = rs.getString("name");
+				String role = rs.getString("role");
+				Date regdate = rs.getDate("regdate");
+				
+				MemberDTO dto = new MemberDTO(idx, id, pw, name, role, regdate);
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(conn, pstmt, rs);
+		}
+		return list;
+	} // End
+
 	
 	public MemberDTO getMember(MemberDTO dto) {
 		Connection conn = null;
