@@ -1,13 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-String subPath = request.getContextPath() + "/member-mvc";
-%>    
 <script>
 	function deleteConfirm() {
 		const input = confirm("회원을 탈퇴할까요?");
 		alert(input);
-		if (input) location.href = "delete.do";
+		if (input) location.href = "delete.jsp";
 		else return;
 	};
 	
@@ -15,17 +12,17 @@ String subPath = request.getContextPath() + "/member-mvc";
 <%@include file="../topmenu.jsp" %>
 <%@include file="../subject.jsp" %>
 <h2>
-<a href="<%=subPath %>/main.do">Home</a> |
-<a href="<%=subPath %>/memberList.do">회원목록</a> |
+<a href="index.jsp">Home</a> |
+<a href="memberList.jsp">회원목록</a> |
 
 <% if (session.getAttribute("id") == null) { %>
-	<a href="<%=subPath %>/join.do">회원가입</a> |
-	<a href="<%=subPath %>/login.do">로그인</a> |
+	<a href="join.jsp">회원가입</a> |
+	<a href="login.jsp">로그인</a> |
 	
 <% } else { %>	
-	<a href="<%=subPath %>/update.do">정보수정</a> |
+	<a href="update.jsp">정보수정</a> |
 	<a href="#" onclick="deleteConfirm();">회원탈퇴</a> |
-	<a href="<%=subPath %>/logout.do">로그아웃</a> | <br>
+	<a href="logout.jsp">로그아웃</a> | <br>
 	<%=session.getAttribute("name") %>(<%=session.getAttribute("id") %>) 로그인 중
 <% } %>
 </h2>

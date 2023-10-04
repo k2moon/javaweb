@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>member-servlet/main.jsp</title>
+<title><%=request.getRequestURI() %></title>
 </head>
 <body>
 <%@include file="submenu.jsp" %>
-<h2>Member v.MVC</h2>
+<h2><%=request.getRequestURI() %></h2>
 </body>
 </html>

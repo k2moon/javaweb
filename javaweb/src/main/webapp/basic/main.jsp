@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>main.jsp</title>
+<title><%=request.getRequestURI() %></title>
 </head>
 <body>
-<%@include file="topmenu.jsp" %>
-<h2>Home</h2>
+<%@include file="../topmenu.jsp" %>
+<%@include file="../subject.jsp" %>
+<h2><%=request.getRequestURI() %></h2>
 </body>
 </html>

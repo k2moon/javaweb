@@ -1,4 +1,4 @@
-package member;
+package membermvc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

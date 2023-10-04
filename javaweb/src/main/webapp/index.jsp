@@ -8,5 +8,6 @@
 </head>
 <body>
 <%@include file="topmenu.jsp" %>
+<h2><%=request.getRequestURI() %></h2>
 </body>
 </html>
