@@ -23,8 +23,6 @@ if(request.getParameter("page") != null){
 	pageNum = Integer.parseInt(request.getParameter("page")); 
 }
 		
-
-
 // 전체 페이지
 int totalPage = (totalCount-1) / listNum + 1;
 //totalPage = (int)Math.ceil(((totalCount*0.1)/listNum)*10);

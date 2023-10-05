@@ -13,6 +13,8 @@
 <%@include file="../subject.jsp" %>
 <h2>
 <a href="">Main</a> |
+<a href="pagingEx.jsp">Paging JSP</a> |
+<a href="pagingEx2.jsp">Paging Class</a> |
 <a href="memberList.jsp">회원목록 - Paging</a> |
 
 </h2>

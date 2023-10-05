@@ -15,7 +15,7 @@ String subPath = request.getContextPath() + "/member-jsp-dao-ajax";
 <%@include file="../topmenu.jsp" %>
 <%@include file="../subject.jsp" %>
 <h2>
-<a href="<%=subPath %>/main.jsp">Home</a> |
+<a href="<%=subPath %>/main.jsp">Main</a> |
 <a href="<%=subPath %>/memberList.jsp">회원목록</a> |
 <a href="<%=subPath %>/memberSearchNameList.jsp">회원목록(이름검색)</a> |
 

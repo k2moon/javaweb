@@ -10,7 +10,8 @@
 	String name = request.getParameter("name");
 	String role = request.getParameter("role");
 	MemberDTO dto = new MemberDTO(id, pw, name, role);
-	
+%>
+<%	
 	MemberDAO dao = new MemberDAO();
 	int rs = dao.update(dto);
 %>

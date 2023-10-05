@@ -8,6 +8,8 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%// getParameter()
+%>    
 <%
 //db access
 Connection conn = null;
@@ -38,15 +40,17 @@ try {
 		String name = rs.getString("name");
 		String role = rs.getString("role");
 		Date regDate = rs.getDate("regdate");
+		
 		MemberDTO dto = new MemberDTO(idx, id, pw, name, role, regDate);
 		list.add(dto);
-		System.out.println(dto);
+		
 	}
 	
 }catch(Exception e){
 	e.printStackTrace();
 }finally{
 	try{		
+		if(rs != null) rs.close();
 		if(pstmt != null) pstmt.close();
 		if(conn != null) conn.close();
 	}catch(Exception e){

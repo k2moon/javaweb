@@ -11,7 +11,8 @@
 	
 	MemberDTO dto = new MemberDTO();
 	dto.setId(id);
-	
+%>
+<%	
 	MemberDAO dao = new MemberDAO();
 	dto = dao.getMember(dto);
 	

@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@page import="member.MemberDAO"%>
 <%@page import="member.MemberDTO"%>
 <%@page import="java.sql.DriverManager"%>
@@ -10,13 +11,51 @@
 <%
 request.setCharacterEncoding("utf-8");
 String id = (String)session.getAttribute("id");
-
-MemberDTO dto = new MemberDTO();
-dto.setId(id);
-
-MemberDAO dao = new MemberDAO();
-dto = dao.getMember(dto);
-%>  
+%>
+<%
+//db access
+Connection conn = null;
+PreparedStatement pstmt = null;
+ResultSet rs = null;
+MemberDTO dto = null;
+try {
+	String driver = "com.mysql.cj.jdbc.Driver";
+	Class.forName(driver);
+	
+	String dbname = "javaweb";	
+	String url = "jdbc:mysql://localhost:3306/"+dbname+"?ServerTimezone=UTC";
+	String user = "root";
+	String password = "rpass";
+	
+	conn = DriverManager.getConnection(url, user, password);
+	out.print("Conn OK!!");
+	
+	String sql = "select * from member where id=?";
+	pstmt = conn.prepareStatement(sql);
+	pstmt.setString(1, id);
+	rs = pstmt.executeQuery();	
+	if(rs.next()){
+		int idx = rs.getInt("idx");
+		String pw = rs.getString("pw");
+		String name = rs.getString("name");
+		String role = rs.getString("role");
+		Date regDate = rs.getDate("regdate");
+		
+		dto = new MemberDTO(idx, id, pw, name, role, regDate);
+	}
+	
+	
+}catch(Exception e){
+	e.printStackTrace();
+}finally{
+	try{		
+		if(pstmt != null) pstmt.close();
+		if(conn != null) conn.close();
+	}catch(Exception e){
+		e.printStackTrace();
+	}
+}
+%>      
 <!DOCTYPE html>
 <html>
 <head>
