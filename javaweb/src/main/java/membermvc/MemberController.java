@@ -62,13 +62,6 @@ public class MemberController extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 			dispatcher.forward(request, response);
 			
-		}else if(action.equals("/login.do")) {
-			System.out.println("/login.do");
-			
-			view = "login.jsp";
-			RequestDispatcher dispatcher = request.getRequestDispatcher(view);
-			dispatcher.forward(request, response);
-			
 		}else if(action.equals("/joinAction.do")) {
 			System.out.println("/joinAction.do");
 			
@@ -82,6 +75,13 @@ public class MemberController extends HttpServlet {
 			
 			view = "login.do";			
 			response.sendRedirect(view);
+			
+		}else if(action.equals("/login.do")) {
+			System.out.println("/login.do");
+			
+			view = "login.jsp";
+			RequestDispatcher dispatcher = request.getRequestDispatcher(view);
+			dispatcher.forward(request, response);
 			
 		}else if(action.equals("/loginAction.do")) {
 			System.out.println("/loginAction.do"); 
